@@ -53,9 +53,7 @@
         }
 
         @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+            to { opacity: 1; }
         }
 
         @keyframes flutuar {
@@ -64,7 +62,7 @@
             100% { transform: translateY(0); }
         }
 
-        /* 💖 corações */
+        /* 💖 Corações */
         .heart {
             position: absolute;
             bottom: -20px;
@@ -74,34 +72,48 @@
         }
 
         @keyframes subir {
-            from {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateY(-100vh);
-                opacity: 0;
-            }
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        /* 🔊 Botão de música */
+        #btnMusica {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+
+            background-color: #ff69b4;
+            color: #000;
+            border: none;
+            padding: 12px 18px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+            z-index: 3;
+        }
+
+        #btnMusica:hover {
+            transform: scale(1.05);
         }
 
         /* 📱 Mobile */
         @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            p {
-                font-size: 1.05rem;
-            }
+            h1 { font-size: 1.8rem; }
+            p { font-size: 1.05rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 🎵 Música -->
-    <audio autoplay loop>
-        <source src="music/Gorila roxo.mp3"  type="audio/mpeg"> 
+    <!-- 🎵 Música sem autoplay -->
+    <audio id="musica" loop>
+        <source src="music/Quando bate aquela saudade.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- 🔊 Botão para ativar música -->
+    <button id="btnMusica">🔊 Ativar música</button>
 
     <div class="container">
         <h1>Eu amo a Ana!</h1>
@@ -131,13 +143,24 @@
 
             document.body.appendChild(heart);
 
-            setTimeout(() => {
-                heart.remove();
-            }, 6000);
+            setTimeout(() => { heart.remove(); }, 6000);
         }
 
         setInterval(criarCoracao, 400);
     </script>
 
+    <!-- 🎶 Script do botão de música -->
+    <script>
+        const musica = document.getElementById("musica");
+        const botao = document.getElementById("btnMusica");
+
+        botao.addEventListener("click", () => {
+            musica.volume = 0.3; // volume baixo
+            musica.play();
+            botao.style.display = "none"; // esconde botão
+        });
+    </script>
+
 </body>
 </html>
+
