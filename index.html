@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eu amo a Ana!</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: snow;
+            font-style: italic;
+            font-family: "Georgia", "Times New Roman", serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 90%;
+            width: 700px;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 25px;
+            margin-top: 20px;
+            opacity: 0;
+
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            animation: fadeIn 2s ease forwards, flutuar 4s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes flutuar {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* 💖 corações */
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            font-size: 20px;
+            animation: subir 6s linear infinite;
+            color: rgba(255, 105, 180, 0.7);
+        }
+
+        @keyframes subir {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        /* 📱 Mobile */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🎵 Música -->
+    <audio autoplay loop>
+        <source src="music/Gorila roxo.mp3"  type="audio/mpeg"> 
+    </audio>
+
+    <div class="container">
+        <h1>Eu amo a Ana!</h1>
+        <p>Sobre o quanto eu amo a Ana.</p>
+
+        <p>
+            Essa menina apareceu na minha vida e mudou tudo.
+            Ela é incrível e me faz muito feliz!
+            Todos os dias agradeço por essa garota incrível estar ao meu lado,
+            me sinto o homem mais feliz desse mundo.
+            Eu te amo muito Ana Carolline!
+            Espero te ver de branco no altar e passar o resto da minha vida ao seu lado.
+        </p>
+
+        <img src="img/Ana meu amor.jpeg" alt="Foto da Ana">
+    </div>
+
+    <!-- 💖 Script dos corações -->
+    <script>
+        function criarCoracao() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 20 + 15 + "px";
+            heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(criarCoracao, 400);
+    </script>
+
+</body>
+</html>

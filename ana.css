@@ -1,0 +1,11 @@
+ body {
+            background-color: #000000;
+        }
+        h1 {
+            color: rgb(138, 2, 2);
+            text-align: center;
+        }
+        p {
+            font-size: 22px;
+            color: snow;
+        }
